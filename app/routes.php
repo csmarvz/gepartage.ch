@@ -25,14 +25,14 @@ Route::get('reset_pw', function()
 	return "all password reset";
 });
 
-Route::get('login', function(){
+Route::get('connexion', function(){
 	return View::make('login');
 });
 
-Route::post('login', array('as' => 'login', 'uses' => 'AuthController@postLogin'));
+Route::post('connexion', array('as' => 'login', 'uses' => 'AuthController@postLogin'));
 
 
-Route::get('logout', array('as' => 'logout', 'uses' => 'AuthController@getLogout'));
+Route::get('deconnexion', array('as' => 'logout', 'uses' => 'AuthController@getLogout'));
 
 Route::get('inscription', function()
 {
@@ -48,13 +48,28 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('user.annonces');
 	});
 	Route::get('annonce', array('as' => 'annonce', 'uses' => 'AdController@create'));
+	Route::get('/recherche', array('as' => 'objects.search', 'uses' => 'ObjectController@search'));
+	
 	Route::resource('ads','AdController');
 	
 	Route::get('profil', function()
 	{
-		return View::make('profil');
+		return View::make('user.profil')->with('profil', true);;
+	});	
+	
+	Route::get('profil/mes_objets', function()
+	{
+		return View::make('user.profil')->with('objets', true);;
 	});	
 	
 	Route::post('update', array('as' => 'users.storeCategories', 'uses' => 'UserController@storeCategories'));
 	Route::resource('user','UserController');
+	
+	Route::get('partage/{objectSlug}', function($objectSlug) {
+		
+		$object = Object::where('slug',$objectSlug)->first();
+	    $users = $object->users;
+
+	    return View::make('partage',compact('users','object'));
+	});
 });

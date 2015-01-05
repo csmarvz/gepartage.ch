@@ -46,7 +46,7 @@ class AuthController extends BaseController {
             else
             {
                 // Redirect to the login page.
-                return Redirect::to('login')->withErrors(array('password' => 'Mot de passe invalide'))->withInput(Input::except('password'));
+                return Redirect::to('connexion')->withErrors(array('password' => 'Mot de passe invalide'))->withInput(Input::except('password'));
             }
         }
 

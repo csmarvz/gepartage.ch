@@ -21,10 +21,16 @@
         {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Mot de passe')) }}
     </div>
 	<div class="form-group">
-        {{ Form::text('address', Input::old('address'), array('class' => 'form-control', 'placeholder' => 'Adresse complète')) }}
+        {{ Form::text('address', Input::old('address'), array('class' => 'form-control', 'placeholder' => 'Rue et n°')) }}
+    </div>
+	<div class="form-group">
+        {{ Form::text('zip', Input::old('zip'), array('class' => 'form-control', 'placeholder' => 'NPA')) }}
     </div>
     
     {{ Form::submit('Enregistrer', array('class' => 'btn btn-default')) }}
+		<small>
+		{{ HTML::link('connexion','Déjà inscrit? Connecte-toi') }}
+	</small>
     {{ Form::close() }}
 </div>
 </div>

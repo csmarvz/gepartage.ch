@@ -5,6 +5,8 @@
         {{ HTML::script('assets/js/bootstrap.js') }}
         {{ HTML::style('assets/css/bootstrap.min.css') }}
 		{{ HTML::style('assets/css/style.css') }}
+		
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,9 +43,22 @@
                             {{ Form::submit('Connexion', array('class' => 'btn btn-default')) }}
 							
 							{{ Form::close()}}
-					-->
-						<li>{{ link_to('inscription', 'Inscription', $attributes = array(), $secure = null) }}</li>
-						<li>{{ link_to('login', 'Connexion', $attributes = array(), $secure = null) }}</li>
+					
+							
+						<li>
+							<a href="{{ URL::to('inscription') }}">
+								<i class="ace-icon fa fa-edit"></i>
+								Inscription
+							</a>
+						</li>
+						<li>
+							<a href="{{ URL::to('connexion') }}">
+								<i class="ace-icon fa fa-lock"></i>
+								Connexion
+							</a>
+							
+						</li>
+							-->
 						
                         @else
 						
@@ -52,8 +67,7 @@
 						              <ul class="dropdown-menu" role="menu">
 						                <li>{{ HTML::link('profil', 'Mon profil') }}</li>
 										<li>{{ HTML::link('annonces', 'Mes annonces') }}</li>
-						                <li class="divider"></li>
-										<li>{{ HTML::link('logout', 'Déconnexion') }}</li>
+										<li>{{ HTML::link('deconnexion', 'Déconnexion') }}</li>
 						              </ul>
 						            </li>
                             
@@ -69,15 +83,14 @@
             @yield('content')
             
             <footer>
-        <div class="row">
-          <div class="col-lg-12">
+			</div>
+        <div class="container">
 
               <br>
-              
+			  
             <p>Made by Henry Seng, contact at <a href="mailto:geneve.partage@maileum.com">geneve.partage@maileum.com</a>.
             An experiment of <a href="http://maileum.com" rel="nofollow">Maileum</a>. </p>
           </div>
-        </div>
 
       </footer>
         </div>

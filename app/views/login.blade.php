@@ -13,7 +13,9 @@
 		{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'mot de passe')) }}
 	</div>
 		    {{ Form::submit('Connexion', array('class' => 'btn btn-default')) }}
-			
+			<small>
+			{{ HTML::link('inscription','Nouveau ici? Inscris-toi') }}
+		</small>
 			{{ Form::close()}}
 			
 </div>
