@@ -13,20 +13,7 @@
 <div class"row">
 	<div class="col-md-3"></div>
 	
-	<div class="col-md-3">
-		<h4>Connecte-toi</h4>
-		{{ Form::open(array('route' => 'login'))}}
-		<div class="form-group">
-			{{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Email')) }}
-		</div>
-		<div class="form-group">
-			{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Mot de passe')) }}
-		</div>
-		{{ Form::submit('Se connecter', array('class' => 'btn btn-default')) }}
-			
-		{{ Form::close()}}
-			
-	</div>
+	
 	
 	
 	<div class="col-md-3">
@@ -55,8 +42,23 @@
 			{{ Form::text('zip', Input::old('zip'), array('class' => 'form-control', 'placeholder' => 'NPA')) }}
 		</div>
     
-		{{ Form::submit("S'inscrire", array('class' => 'btn btn-default')) }}
+		{{ Form::submit("S'inscrire", array('class' => 'btn btn-primary')) }}
 		{{ Form::close() }}
+	</div>
+	
+	<div class="col-md-3">
+		<h4>Déjà inscrit? Connecte-toi</h4>
+		{{ Form::open(array('route' => 'login'))}}
+		<div class="form-group">
+			{{ Form::email('email', Input::old('email'), array('class' => 'form-control', 'placeholder' => 'Email')) }}
+		</div>
+		<div class="form-group">
+			{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Mot de passe')) }}
+		</div>
+		{{ Form::submit('Se connecter', array('class' => 'btn btn-primary')) }}
+			
+		{{ Form::close()}}
+			
 	</div>
 </div>
 
@@ -65,13 +67,15 @@
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
 		{{ Form::open(array('route' => 'objects.search', 'method' => 'get')) }}
-		<div class="input-group">
-			{{ Form::text('recherche', Input::old('search'), array('class' => 'form-control', 'placeholder' => "J'ai besoin d'un ...")) }}
+		<div class="form-group">
+			{{ Form::text('objet', Input::old('objet'), array('class' => 'form-control', 'placeholder' => "J'ai besoin d'un ...")) }}
+			<!-- >
 			<span class="input-group-btn">
-				<button type="button" class="btn btn-primary">
+				<button type="submit" class="btn btn-primary">
 					<span class="glyphicon glyphicon-search"></span>
 				</button>
 			</span>
+				-->
 		</div>
 		{{ Form::close() }}
 	</div>

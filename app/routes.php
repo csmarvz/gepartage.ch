@@ -48,7 +48,7 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('user.annonces');
 	});
 	Route::get('annonce', array('as' => 'annonce', 'uses' => 'AdController@create'));
-	Route::get('/recherche', array('as' => 'objects.search', 'uses' => 'ObjectController@search'));
+	Route::get('recherche', array('as' => 'objects.search', 'uses' => 'ObjectController@search'));
 	
 	Route::resource('ads','AdController');
 	

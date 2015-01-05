@@ -10,7 +10,7 @@
 </ul>
 <br>
     
-	{{ Form::model(Auth::user(), array('route' => array('users.update', Auth::user()->id), 'method' => 'put')) }}
+	{{ Form::model(Auth::user(), array('route' => array('users.update', Auth::user()->id), 'method' => 'put', 'autocomplete' => 'off')) }}
 
 @if(@$profil)
 <div class="row">	

@@ -32,7 +32,10 @@ class ObjectController extends BaseController {
 	
 	public function search()
 	{
+		$search = Str::slug(Input::get('objet'));
+		$objects = Object::where('slug','like','%' . $search.'%')->get();
 		
+		return View::make('search',compact('objects','search'));
 	}
 
 }

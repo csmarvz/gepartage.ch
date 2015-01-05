@@ -25,8 +25,10 @@ class ObjectsTableSeeder extends Seeder {
 	*/
 	public function run()
 	{
-		DB::table('objects')->delete(); 
+		//DB::table('objects')->delete(); 
 		     
+		Object::create(array('name' => "Marteau", 'slug' => Str::slug("Marteau"), 'article_ind' => 'un'));
+		/*
 		Object::create(array('name' => "Pompe à vélo", 'slug' => Str::slug("Pompe à vélo")));
 		Object::create(array('name' => "Mixer", 'slug' => Str::slug("Mixer")));
 		Object::create(array('name' => "Balance de cuisine", 'slug' => Str::slug("Balance de cuisine")));
@@ -46,7 +48,7 @@ class ObjectsTableSeeder extends Seeder {
 		Object::create(array('name' => "Scie sauteuse", 'slug' => Str::slug("Scie sauteuse")));
 		Object::create(array('name' => "Scie circulaire", 'slug' => Str::slug("Scie circulaire")));
 		Object::create(array('name' => "Machine à coudre", 'slug' => Str::slug("Machine à coudre")));
-		Object::create(array('name' => "Fer à repasse", 'slug' => Str::slug("Fer à repasse")));
+		Object::create(array('name' => "Fer à repasser", 'slug' => Str::slug("Fer à repasse")));
 		Object::create(array('name' => "Echelle", 'slug' => Str::slug("Echelle")));
 		Object::create(array('name' => "Rallonge électrique", 'slug' => Str::slug("Rallonge électrique")));
 		Object::create(array('name' => "Table de pique-nique (table de fête)", 'slug' => Str::slug("Table de pique-nique (table de fête)")));
@@ -76,6 +78,7 @@ class ObjectsTableSeeder extends Seeder {
 		Object::create(array('name' => "Livres", 'slug' => Str::slug("Livres")));
 		Object::create(array('name' => "Journaux", 'slug' => Str::slug("Journaux")));
 		Object::create(array('name' => "WIFI", 'slug' => Str::slug("WIFI")));
+		*/
 	}
 
 }
