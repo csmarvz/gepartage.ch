@@ -51,6 +51,7 @@
 	</div>
 </div>
 @elseif(@$objets)
+{{ Form::hidden('objects_update',true) }}
 <div class="row">
 	@foreach(Object::all() as $object)
 	<div class="col-md-3">
@@ -59,7 +60,7 @@
 		<div class="form-group">
 			<label>
 				{{ Form::checkbox('objects_array[]', $object->id, Auth::user()->hasObject($object->id)) }} {{ $object->name }} 
-				{{ Form::hidden('objects_update',true) }}
+				
 			</label>
 		</div>
 	</div>
