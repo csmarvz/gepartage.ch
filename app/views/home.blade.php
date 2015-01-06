@@ -68,7 +68,7 @@
 	<div class="col-md-6">
 		{{ Form::open(array('route' => 'objects.search', 'method' => 'get')) }}
 		<div class="form-group">
-			{{ Form::text('objet', Input::old('objet'), array('class' => 'form-control', 'placeholder' => "J'ai besoin d'un ...")) }}
+			{{ Form::text('q', Input::old('q'), array('class' => 'form-control', 'placeholder' => "J'ai besoin d'un ...")) }}
 			<!-- >
 			<span class="input-group-btn">
 				<button type="submit" class="btn btn-primary">

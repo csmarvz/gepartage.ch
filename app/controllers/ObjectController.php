@@ -8,6 +8,12 @@ class ObjectController extends BaseController {
 	
 	public function store()
 	{
+		$object = new Object();
+		$object->name = Input::get('name');
+		$object->slug = Str::slug($object->name);
+		$object->save();
+		
+		return Redirect::to('');
 		
 	}
 	
@@ -21,7 +27,7 @@ class ObjectController extends BaseController {
 	}
 	public function create()
 	{
-		Return View::make('annonce');
+		Return View::make('object.create');
 	}
 	public function update($id)
 	{
@@ -32,7 +38,7 @@ class ObjectController extends BaseController {
 	
 	public function search()
 	{
-		$search = Str::slug(Input::get('objet'));
+		$search = Str::slug(Input::get('q'));
 		$objects = Object::where('slug','like','%' . $search.'%')->get();
 		
 		return View::make('search',compact('objects','search'));

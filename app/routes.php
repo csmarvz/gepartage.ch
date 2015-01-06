@@ -51,6 +51,10 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('recherche', array('as' => 'objects.search', 'uses' => 'ObjectController@search'));
 	
 	Route::resource('ads','AdController');
+	Route::resource('objects','ObjectController');
+	
+	
+	Route::get('ajout', array('as' => 'objects.create', 'uses' => 'ObjectController@create'));
 	
 	Route::get('profil', function()
 	{
