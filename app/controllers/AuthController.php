@@ -41,17 +41,17 @@ class AuthController extends BaseController {
             if (Auth::attempt($userdata))
             {
                 // Redirect to homepage
-                return Redirect::to('')->with('success', 'Connexion réussie');
+                return Redirect::to('')->with('success', "Tu t'es bien connecté!");
             }
             else
             {
                 // Redirect to the login page.
-                return Redirect::to('connexion')->withErrors(array('password' => 'Mot de passe invalide'))->withInput(Input::except('password'));
+                return Redirect::to('connexion')->withErrors(array('password' => "Attention, ton email ou ton mot de passe n'est pas correct."))->withInput(Input::except('password'));
             }
         }
 
         // Something went wrong.
-        return Redirect::to('login')->withErrors($validator)->withInput(Input::except('password'));
+        return Redirect::to('connexion')->withErrors("Attention, ton email ou ton mot de passe n'est pas correct.")->withInput(Input::except('password'));
     }
     
      public function getLogout()
@@ -60,6 +60,6 @@ class AuthController extends BaseController {
         Auth::logout();
 
         // Redirect to homepage
-        return Redirect::to('')->with('success', 'Déconnexion réussie');
+        return Redirect::to('')->with('success', 'Déconnexion réussie, à bientôt!');
     }
 }

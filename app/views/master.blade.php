@@ -66,7 +66,7 @@
 						              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bienvenue, <b>{{ Auth::user()->firstname . " " . Auth::user()->lastname  }}</b> <span class="caret"></span></a>
 						              <ul class="dropdown-menu" role="menu">
 						                <li>{{ HTML::link('profil', 'Mon profil') }}</li>
-										<li>{{ HTML::link('annonces', 'Mes annonces') }}</li>
+										<li>{{ HTML::link('avis', 'Mes avis de recherche') }}</li>
 										<li>{{ HTML::link('deconnexion', 'Déconnexion') }}</li>
 						              </ul>
 						            </li>
@@ -87,9 +87,10 @@
         <div class="container">
 
               <br>
-			  
-            <p>Made by Henry Seng, contact at <a href="mailto:geneve.partage@maileum.com">geneve.partage@maileum.com</a>.
-            An experiment of <a href="http://maileum.com" rel="nofollow">Maileum</a>. </p>
+			  <small>
+            <p>Concept développé par <a href="mailto:geneve.partage@maileum.com">Henry Seng</a>.
+            Une expérience de <a href="http://maileum.com" rel="nofollow">Maileum</a>. </p>
+		</small>
           </div>
 
       </footer>

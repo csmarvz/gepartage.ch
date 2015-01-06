@@ -9,8 +9,13 @@
 		
 		{{ Form::open(array('route' => 'objects.store', 'autocomplete' => 'off'))}}
 		<div class="form-group">
-			{{ Form::text('name', Input::old('name'), array('class' => 'form-control', 'placeholder' => "Nom de l'objet ou du service")) }}
+			{{ Form::text('name', Input::get('q'), array('class' => 'form-control', 'placeholder' => "Nom de l'objet ou du service")) }}
 		</div>
+		<div class="form-group">
+			{{Form::label('avis','Créer un avis de recherche?')}}
+		{{ Form::checkbox('avis', '1', false, array('class' => '')) }}
+	</div>
+		
 		{{ Form::submit('Ajouter', array('class' => 'btn btn-primary')) }}
 		{{ Form::close()}}
 			

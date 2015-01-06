@@ -10,9 +10,9 @@ class UserController extends BaseController {
 	{
 		$data = Input::all();
 		$data['password'] = Hash::make($data['password']);
-		User::create($data);
+		$user = User::create($data);
 		
-		return View::make('home');
+		return Redirect::to('')->with('success','Bravo '. $user->firstname . ', ton compte a bien été créé! Tu peux maintenant te connecter.');
 	}
 	
 	public function storeCategories(){
@@ -64,9 +64,9 @@ class UserController extends BaseController {
 		
 		Auth::user()->update($data);
 		if($object_update) {
-			return Redirect::to('profil/mes_objets');
+			return Redirect::to('profil/mes_objets')->with('success','Les objets que tu peux partager ont bien été mis à jour!');;
 		}
-		return Redirect::to('profil');
+		return Redirect::to('profil')->with('success','Ton profil a été mis à jour avec succès!');;
 	}
 	public function destroy()
 	{

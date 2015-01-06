@@ -1,7 +1,19 @@
 @extends('master')
 @section('content')
 
-
+	@if(Session::get('success'))
+	<div class="alert alert-success" role="alert">
+	  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+	  {{ Session::get('success') }}
+	</div>
+	@endif
+	@if(Session::get('error'))
+	<div class="alert alert-danger" role="alert">
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  {{ Session::get('error') }}
+	</div>
+	@endif
+	
 		<h1>Mon profil</h1>
 
 <ul class="nav nav-pills">

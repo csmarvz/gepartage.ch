@@ -4,9 +4,24 @@
          
 
 <div class="container text-center">
+	@if(Session::get('success'))
+	<div class="alert alert-success" role="alert">
+	  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+	  {{ Session::get('success') }}
+	</div>
+	@endif
+	@if(Session::get('error'))
+	<div class="alert alert-danger" role="alert">
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  {{ Session::get('error') }}
+	</div>
+	@endif
+	
 	<h1>Genève Partage</h1>
 	<p>Partagez entre genevois tout plein de choses!</p>
 </div>
+
+
 	
 
 @if(Auth::guest())
@@ -78,6 +93,15 @@
 				-->
 		</div>
 		{{ Form::close() }}
+		Les derniers avis de recherche
+		
+		@foreach(Ad::all()->sortByDesc('updated_at') as $ad)
+		<div class="row">
+			<div class="col-md-12">
+		{{ $ad->created_at }} {{ $ad->user->firstname }} cherche {{ $ad->object->name }}
+	</div>
+	</div>
+		@endforeach
 	</div>
 </div>
 

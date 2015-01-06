@@ -43,7 +43,7 @@ Route::resource('users','UserController');
 
 Route::group(array('before' => 'auth'), function()
 {
-	Route::get('annonces', function()
+	Route::get('avis', function()
 	{
 		return View::make('user.annonces');
 	});

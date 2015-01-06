@@ -8,14 +8,16 @@ class AdController extends BaseController {
 	
 	public function store()
 	{
-		$data = Input::all();
+		
+		//$data = Input::all();
 		$ad = new Ad();
-		$ad->title = $data['title'];
-		$ad->description = $data['description'];
+		//$ad->title = $data['title'];
+		//$ad->description = $data['description'];
 		$ad->user_id = Auth::user()->id;
-		$ad->category_id = $data['category_id'];
+		$ad->object_id = Input::get('object_id');
+		//$ad->category_id = $data['category_id'];
 		$ad->save();
-		return Redirect::route('ads.show',$ad->id);
+		return Redirect::to("")->with("success","Ton avis de recherche a été créé!");
 	}
 	
 	public function show($id)
