@@ -5,7 +5,7 @@
 	<h1>Ajouter un nouvel objet ou service</h1>
 	
 </div>
-	<div class="col-md-3">
+	<div class="col-md-4">
 		
 		{{ Form::open(array('route' => 'objects.store', 'autocomplete' => 'off'))}}
 		<div class="form-group">

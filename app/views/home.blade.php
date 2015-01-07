@@ -18,7 +18,7 @@
 	@endif
 	
 	<h1>Genève Partage</h1>
-	<p>Partagez entre genevois tout plein de choses!</p>
+	<p>Partagez entre genevois des objets et des services!</p>
 </div>
 
 
@@ -98,7 +98,7 @@
 		@foreach(Ad::all()->sortByDesc('updated_at') as $ad)
 		<div class="row">
 			<div class="col-md-12">
-		{{ $ad->created_at }} {{ $ad->user->firstname }} cherche {{ $ad->object->name }}
+		<small>{{ $ad->created_at }}</small> {{ $ad->user->firstname }} cherche {{ $ad->object->name }}
 	</div>
 	</div>
 		@endforeach

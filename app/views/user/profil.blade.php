@@ -52,6 +52,9 @@
 </div>
 @elseif(@$objets)
 {{ Form::hidden('objects_update',true) }}
+	
+{{ link_to('ajout' ,"Ajouter un nouvel objet", array('class' => '')) }}</br><br>
+
 <div class="row">
 	@foreach(Object::all() as $object)
 	<div class="col-md-3">

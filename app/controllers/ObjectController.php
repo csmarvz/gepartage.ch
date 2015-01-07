@@ -23,7 +23,7 @@ class ObjectController extends BaseController {
 			$ad_text = "Ton avis de recherche a aussi été émis.";
 		}
 		
-		return Redirect::to('')->with('success',"Le nouvel objet ". $object->name . " a bien été rajouté! ". $ad_text);
+		return Redirect::to('')->with('success',$object->name . " a bien été rajouté à la base! ". $ad_text);
 		
 	}
 	
