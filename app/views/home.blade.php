@@ -18,7 +18,7 @@
 	@endif
 	
 	<h1>Genève Partage</h1>
-	<p>Partagez entre genevois des objets et des services!</p>
+	<p>Partager entre genevois des objets et des services!</p>
 </div>
 
 
