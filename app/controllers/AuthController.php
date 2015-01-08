@@ -17,6 +17,7 @@ class AuthController extends BaseController {
     
     public function postLogin()
     {
+		dd('test');
         // Get all the inputs
         // id is used for login, username is used for validation to return correct error-strings
         $userdata = array(

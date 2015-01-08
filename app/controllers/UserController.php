@@ -9,10 +9,41 @@ class UserController extends BaseController {
 	public function store()
 	{
 		$data = Input::all();
+		
+		
+        $rules = array(
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|same:password_confirmation'
+        );
+        
+        $messages = array(
+            'firstname.required' => "N'oublie pas ton prénom!",
+            'lastname.required' => "N'oublie pas ton nom de famille!",
+            'email.required' => "N'oublie pas ton adresse email!",
+            'email.email' => "Attention, le format de l'email est xxx@yyy.zzz",
+            'email.unique' => "Malheureusement, l'adresse email que tu as entrée est déjà utilisée.",
+			'password.required' => "N'oublie pas ton mot de passe!",
+            'password.same' => "Attention! Ton mot de passe et la confirmation doivent être identiques",
+    
+        );
+
+        $validator = Validator::make($data, $rules, $messages);
+
+        if ($validator->fails())
+        {
+            return Redirect::to('/')->withErrors($validator)->withInput();
+        }
+		
+		unset($data['password_confirmation']);
+		
 		$data['password'] = Hash::make($data['password']);
 		$user = User::create($data);
 		
-		return Redirect::to('')->with('success','Bravo '. $user->firstname . ', ton compte a bien été créé! Tu peux maintenant te connecter.');
+		
+		Auth::login($user);
+		return Redirect::to('')->with('success','Bravo '. $user->firstname . ', ton compte a bien été créé! Tu peux maintenant utiliser notre plateforme pour partager des objets.');
 	}
 	
 	public function storeCategories(){

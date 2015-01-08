@@ -15,7 +15,7 @@ class Object extends Eloquent {
 	protected $guard = array('id');
 	
 	public function users() {
-		return $this->belongsToMany('User','user_objects');
+		return $this->belongsToMany('User','user_object');
 	}
 
 

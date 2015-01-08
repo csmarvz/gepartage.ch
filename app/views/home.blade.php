@@ -10,10 +10,10 @@
 	  {{ Session::get('success') }}
 	</div>
 	@endif
-	@if(Session::get('error'))
+	@if(Session::get('errors'))
 	<div class="alert alert-danger" role="alert">
 	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-	  {{ Session::get('error') }}
+	  {{ Session::get('errors')->first() }}
 	</div>
 	@endif
 	
@@ -51,6 +51,9 @@
 			{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Mot de passe')) }}
 		</div>
 		<div class="form-group">
+	        {{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Confirmer le mot de passe')) }}
+	    </div>
+		<div class="form-group">
 			{{ Form::text('address', Input::old('address'), array('class' => 'form-control', 'placeholder' => 'Rue et n°')) }}
 		</div>
 		<div class="form-group">
@@ -83,7 +86,7 @@
 	<div class="col-md-6">
 		{{ Form::open(array('route' => 'objects.search', 'method' => 'get')) }}
 		<div class="form-group">
-			{{ Form::text('q', Input::old('q'), array('class' => 'form-control', 'placeholder' => "Je recherche ...")) }}
+			{{ Form::text('q', Input::old('q'), array('class' => 'form-control', 'placeholder' => "Tape ici ce que tu cherches")) }}
 			<!-- >
 			<span class="input-group-btn">
 				<button type="submit" class="btn btn-primary">

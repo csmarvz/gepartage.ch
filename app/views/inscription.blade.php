@@ -21,6 +21,9 @@
         {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Mot de passe')) }}
     </div>
 	<div class="form-group">
+        {{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Confirmer le mot de passe')) }}
+    </div>
+	<div class="form-group">
         {{ Form::text('address', Input::old('address'), array('class' => 'form-control', 'placeholder' => 'Rue et n°')) }}
     </div>
 	<div class="form-group">

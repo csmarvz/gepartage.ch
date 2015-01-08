@@ -50,7 +50,7 @@ class ObjectController extends BaseController {
 	{
 		$search = Str::slug(Input::get('q'));
 		$objects = Object::where('slug','like','%' . $search.'%')->get();
-		if($objects->count()==1){
+		if($objects->count()==1 && $objects->first()->slug == $search){
 			$object = $objects->first();
 			return Redirect::to("partage/$object->slug");
 		}
