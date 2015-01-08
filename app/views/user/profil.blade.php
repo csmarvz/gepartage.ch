@@ -19,6 +19,7 @@
 <ul class="nav nav-pills">
 <li role="presentation"  class="{{ @$profil?'active':'' }}"><a href="{{ URL::to('profil')}}">Données personnelles</a></li>
   <li role="presentation" class="{{ @$objets?'active':'' }}"><a href="{{ URL::to('profil/mes_objets')}}">Mes objets</a></li>
+  <li role="presentation" class="{{ @$avis?'active':'' }}"><a href="{{ URL::to('profil/mes_avis')}}">Mes avis de recherche</a></li>
 </ul>
 <br>
     
@@ -69,6 +70,14 @@
 	</div>
 	@endforeach
 </div>
+@elseif(@$avis)
+		@foreach(Auth::user()->ads->sortByDesc('updated_at') as $ad)
+		<div class"row">
+			<div class="col-md-12">
+				{{ HTML::link("partage/".$ad->object->slug,$ad->object->name) }} <small><cite>le {{{ @$ad->created_at }}}</cite></small>
+			</div>
+		</div>
+			@endforeach
 @endif
 		
 		

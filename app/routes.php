@@ -43,10 +43,7 @@ Route::resource('users','UserController');
 
 Route::group(array('before' => 'auth'), function()
 {
-	Route::get('avis', function()
-	{
-		return View::make('user.annonces');
-	});
+	
 	Route::get('annonce', array('as' => 'annonce', 'uses' => 'AdController@create'));
 	Route::get('recherche', array('as' => 'objects.search', 'uses' => 'ObjectController@search'));
 	
@@ -64,6 +61,11 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('profil/mes_objets', function()
 	{
 		return View::make('user.profil')->with('objets', true);;
+	});	
+	
+	Route::get('profil/mes_avis', function()
+	{
+		return View::make('user.profil')->with('avis', true);;
 	});	
 	
 	Route::post('update', array('as' => 'users.storeCategories', 'uses' => 'UserController@storeCategories'));
