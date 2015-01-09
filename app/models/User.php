@@ -33,6 +33,38 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('Ad');
 	}
 	
+	public function messagesSent(){
+		return $this->hasMany('Message','sender_id');
+	}
+	
+	public function messagesReceived(){
+		return $this->hasMany('Message','receiver_id');
+	}
+	
+	public function correspondents() {
+		
+		$users = DB::table('users')
+			->join('messages', function($join)
+			        {
+			            $join->on('users.id', '=', 'messages.sender_id')
+							->orOn('users.id', '=', 'messages.receiver_id');
+			        })->where(function($query)
+					{
+						$query->where('messages.sender_id', '=', Auth::id())->orWhere('messages.receiver_id', '=', Auth::id());
+					
+					})
+						
+						
+						
+						->where('users.id','!=',Auth::id())->groupBy('users.id')->distinct()->get();
+					
+					
+		
+		return $users;
+		
+	}
+	
+	
 	public function hasObject($id){
 		$object = $this->objects->find($id);
 		

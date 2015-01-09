@@ -9,9 +9,28 @@ class MessageController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		
+		
+		$correspondents = Auth::user()->correspondents();
+				
+		return View::make('user.messages',compact('correspondents'));
 	}
 
+
+	public function showByUser($userId){
+		
+		$messages = Message::where('messages.receiver_id', '=', $userId)->where('messages.sender_id', '=', Auth::id())->get();
+		$messages = $messages->merge(Message::where('messages.sender_id', '=', $userId)->where('messages.receiver_id','=',Auth::id())->get());
+		//$messages= Message::where('messages.sender_id', '=', $userId)->where('messages.receiver_id','=',Auth::id())->get();
+		
+		$correspondents = User::all();
+		
+		
+					
+		return View::make('user.messages',compact('messages','correspondents'));
+	}
+	
+	
 
 	/**
 	 * Show the form for creating a new resource.
@@ -31,7 +50,19 @@ class MessageController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$data = Input::all();
+		$message = new Message();
+		//$message->title = $data['title'];
+		$message->body = $data['body'];
+		$message->receiver_id = $data['receiver_id'];
+		$message->object_id = $data['object_id'];
+		$message->sender_id = Auth::id();
+		$message->save();
+		
+		$receiver = User::find($message->receiver_id);
+		
+		return Redirect::to('messages/envoi')->with('success',"Ton message a bien été envoyé à $receiver->firstname");
+		
 	}
 
 

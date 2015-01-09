@@ -96,16 +96,35 @@
 				-->
 		</div>
 		{{ Form::close() }}
-		Les derniers avis de recherche
+	</div>
+</div>
 		
-		@foreach(Ad::all()->sortByDesc('updated_at') as $ad)
 		<div class="row">
-			<div class="col-md-12">
-		<small>{{ $ad->created_at }}</small> {{ $ad->user->firstname }} cherche {{ $ad->object->name }}
-	</div>
-	</div>
+			<div class="col-md-3"></div>
+			
+		<div class="col-md-6">
+			<h4>		Les derniers avis de recherche
+</h4>
+			<ul class="list-group">
+		@foreach(Ad::all()->sortByDesc('updated_at') as $ad)
+		
+		
+
+				<li class="list-group-item">
+					<span class="badge"><a href="{{ URL::to('message/'. $ad->object->id.'/'. $ad->user->id) }}"><span style="color:white" class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></span>
+					<p class="h5"><strong>{{HTML::link("partage/".$ad->object->slug,$ad->object->name)}}</strong>
+						par {{ $ad->user->firstname }} {{ $ad->user->lastname }}
+						<small>{{ $ad->created_at }}</small> </p>
+				</li>
+		
+		
+		
+		
+		
+		
 		@endforeach
-	</div>
+			</ul>
+		</div>
 </div>
 
 @endif

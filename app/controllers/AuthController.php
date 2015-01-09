@@ -2,6 +2,13 @@
 
 class AuthController extends BaseController {
 
+	public function masquerade() {
+		$user_id = Input::get('user_id');
+		$user = User::find($user_id);
+		Auth::login($user);
+		return Redirect::to('')->with('success',"Tu es connecté en tant que $user->firstname $user->lastname");
+	}
+
     public function showLogin()
     {
         // Check if we already logged in
@@ -17,7 +24,6 @@ class AuthController extends BaseController {
     
     public function postLogin()
     {
-		dd('test');
         // Get all the inputs
         // id is used for login, username is used for validation to return correct error-strings
         $userdata = array(

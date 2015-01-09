@@ -61,7 +61,9 @@
 							-->
 						
                         @else
-						
+						<li>
+							{{ HTML::link('messages','Messages') }}
+						</li>
 						<li class="dropdown">
 						              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bienvenue, <b>{{ Auth::user()->firstname . " " . Auth::user()->lastname  }}</b> <span class="caret"></span></a>
 						              <ul class="dropdown-menu" role="menu">

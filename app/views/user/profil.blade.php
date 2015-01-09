@@ -17,7 +17,7 @@
 		<h1>Mon profil</h1>
 
 <ul class="nav nav-pills">
-<li role="presentation"  class="{{ @$profil?'active':'' }}"><a href="{{ URL::to('profil')}}">Données personnelles</a></li>
+<li role="presentation"  class="{{ @$profil?'active':'' }}"><a href="{{ URL::to('profil')}}">Mes données personnelles</a></li>
   <li role="presentation" class="{{ @$objets?'active':'' }}"><a href="{{ URL::to('profil/mes_objets')}}">Mes objets</a></li>
   <li role="presentation" class="{{ @$avis?'active':'' }}"><a href="{{ URL::to('profil/mes_avis')}}">Mes avis de recherche</a></li>
 </ul>
@@ -53,8 +53,6 @@
 </div>
 @elseif(@$objets)
 {{ Form::hidden('objects_update',true) }}
-	
-{{ link_to('ajout' ,"Ajouter un nouvel objet", array('class' => '')) }}<br><br>
 
 <div class="row">
 	@foreach(Object::all() as $object)
