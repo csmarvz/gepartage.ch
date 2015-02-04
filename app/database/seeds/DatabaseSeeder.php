@@ -28,7 +28,7 @@ class ObjectsTableSeeder extends Seeder {
 		//DB::table('objects')->delete(); 
 		     
 		Object::create(array('name' => "Marteau", 'slug' => Str::slug("Marteau"), 'article_ind' => 'un'));
-		/*
+		
 		Object::create(array('name' => "Pompe à vélo", 'slug' => Str::slug("Pompe à vélo")));
 		Object::create(array('name' => "Mixer", 'slug' => Str::slug("Mixer")));
 		Object::create(array('name' => "Balance de cuisine", 'slug' => Str::slug("Balance de cuisine")));
@@ -78,7 +78,7 @@ class ObjectsTableSeeder extends Seeder {
 		Object::create(array('name' => "Livres", 'slug' => Str::slug("Livres")));
 		Object::create(array('name' => "Journaux", 'slug' => Str::slug("Journaux")));
 		Object::create(array('name' => "WIFI", 'slug' => Str::slug("WIFI")));
-		*/
+		
 	}
 
 }

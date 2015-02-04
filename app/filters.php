@@ -33,6 +33,14 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('admin', function()
+{
+	if (!Auth::user()->is_admin)
+	{
+		return Response::make('Unauthorized', 401);
+	}
+});
+
 Route::filter('auth', function()
 {
 	if (Auth::guest())

@@ -81,6 +81,37 @@
 </div>
 
 @else
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<h2>Comment ça marche?</h2>
+			<p>
+				Grâce à cette plateforme, tu vas pouvoir prêter et emprunter des objets et des services avec tes concitoyens genevois.
+			</p>
+			<h3>
+				1. Première étape
+			</h3>
+			
+			<p>
+				Bien, commençons par ajouter les objets et services que tu peux mettre à disposition via {{ HTML::link('profil/mes_objets', 'ton profil') }} et revenons ici lorsque tu auras fini.
+			</p>
+			<h3>
+				2. Deuxième étape
+			</h3>
+			
+			<p>
+				Maintenant que tu as mis à disposition tes biens, d'autres genevois peuvent te contacter pour te les emprunter. Mais sont-ils au courant que ce site existe?
+				<strong>Partage ce site avec tes amis par SMS, Email, Facebook, Twitter !</strong>
+			</p>
+			<h3>
+				3. Troisième étape
+			</h3>
+			
+			<p>
+				Super, tes amis ont rejoint notre communauté ! Tu peux à présent chercher un bien ou un service dont tu as besoin en utilisant la barre de recherche ci-dessous. Si ce que tu cherches existe dans notre base de données, nous te proposerons une liste de Genevois que tu pourras contacter. S'il n'existe pas, tu peux créer un avis de recherche. Un Genevois bien attentionné pourra alors peut-être t'aider.
+			</p>
+		</div>
+	</div>
 <div class="row">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
@@ -103,8 +134,10 @@
 			<div class="col-md-3"></div>
 			
 		<div class="col-md-6">
+			@if(!Ad::all()->isEmpty())
 			<h4>		Les derniers avis de recherche
 </h4>
+@endif
 			<ul class="list-group">
 		@foreach(Ad::all()->sortByDesc('updated_at') as $ad)
 		

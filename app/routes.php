@@ -31,10 +31,6 @@ Route::get('connexion', function(){
 	return View::make('login');
 });
 
-Route::post('masquerade', array('as' => 'masquerade', 'uses' => 'AuthController@masquerade'));
-Route::get('masquerade',function(){
-	return View::make('masquerade');
-});
 
 Route::post('connexion', array('as' => 'login', 'uses' => 'AuthController@postLogin'));
 
@@ -50,6 +46,24 @@ Route::resource('users','UserController');
 
 Route::group(array('before' => 'auth'), function()
 {
+	
+
+	Route::group(array('before' => 'admin'), function()
+	{
+		Route::get('admin', function()
+		{
+			
+			
+			return View::make('admin');
+		});
+		
+		Route::post('masquerade', array('as' => 'masquerade', 'uses' => 'AuthController@masquerade'));
+		Route::get('masquerade',function(){
+			return View::make('masquerade');
+		});
+		
+		
+	});
 	
 	Route::get('annonce', array('as' => 'annonce', 'uses' => 'AdController@create'));
 	Route::get('recherche', array('as' => 'objects.search', 'uses' => 'ObjectController@search'));

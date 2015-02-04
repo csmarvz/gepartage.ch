@@ -14,19 +14,25 @@ class UserController extends BaseController {
         $rules = array(
             'firstname' => 'required',
             'lastname' => 'required',
+			'phone' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|same:password_confirmation'
+            'password' => 'required|same:password_confirmation',
+			'address' => 'required',
+			'zip' => 'required|integer|between:1200,1299'
         );
         
         $messages = array(
-            'firstname.required' => "N'oublie pas ton prénom!",
-            'lastname.required' => "N'oublie pas ton nom de famille!",
-            'email.required' => "N'oublie pas ton adresse email!",
+            'firstname.required' => "N'oublie pas ton prénom !",
+            'lastname.required' => "N'oublie pas ton nom de famille !",
+            'phone.required' => "N'oublie pas ton numéro de téléphone !",
+            'email.required' => "N'oublie pas ton adresse email !",
             'email.email' => "Attention, le format de l'email est xxx@yyy.zzz",
             'email.unique' => "Malheureusement, l'adresse email que tu as entrée est déjà utilisée.",
-			'password.required' => "N'oublie pas ton mot de passe!",
+			'password.required' => "N'oublie pas ton mot de passe !",
             'password.same' => "Attention! Ton mot de passe et la confirmation doivent être identiques",
-    
+            'zip.required' => "N'oublie pas ton numéro postal !",
+			'zip.integer' => "Désolé, il te faut une adresse à Genève avec un numéro postal valide",
+			'zip.between' => "Désolé, il te faut une adresse à Genève avec un numéro postal valide"
         );
 
         $validator = Validator::make($data, $rules, $messages);

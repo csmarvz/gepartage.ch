@@ -91,8 +91,7 @@
 
               <br>
 			  <small>
-            <p>Concept développé par <a href="mailto:geneve.partage@maileum.com">Henry Seng</a>.
-            Une expérience de <a href="http://maileum.com" rel="nofollow">Maileum</a>. </p>
+            <p>Concept développé par <a href="mailto:csmarvz@gmail.com">Henry Seng</a>.
 		</small>
           </div>
 

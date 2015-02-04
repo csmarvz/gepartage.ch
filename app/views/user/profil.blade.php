@@ -25,6 +25,18 @@
     
 	{{ Form::model(Auth::user(), array('route' => array('users.update', Auth::user()->id), 'method' => 'put', 'autocomplete' => 'off')) }}
 
+
+
+@if(@$avis)
+		@foreach(Auth::user()->ads->sortByDesc('updated_at') as $ad)
+		<div class"row">
+			<div class="col-md-12">
+				{{ HTML::link("partage/".$ad->object->slug,$ad->object->name) }} <small><cite>le {{{ @$ad->created_at }}}</cite></small>
+			</div>
+		</div>
+			@endforeach
+@else
+
 @if(@$profil)
 <div class="row">	
 	<div class="col-md-3">
@@ -68,14 +80,7 @@
 	</div>
 	@endforeach
 </div>
-@elseif(@$avis)
-		@foreach(Auth::user()->ads->sortByDesc('updated_at') as $ad)
-		<div class"row">
-			<div class="col-md-12">
-				{{ HTML::link("partage/".$ad->object->slug,$ad->object->name) }} <small><cite>le {{{ @$ad->created_at }}}</cite></small>
-			</div>
-		</div>
-			@endforeach
+
 @endif
 		
 		
@@ -86,6 +91,7 @@
 			{{ Form::submit('Enregistrer', array('class' => 'btn btn-default')) }}
 			{{ Form::close() }}
 	</div>
+	@endif
 	
 </div>
 @stop   
