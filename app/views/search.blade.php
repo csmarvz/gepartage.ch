@@ -24,7 +24,13 @@
 </div>
 
 @if($objects->isEmpty())
-Malheureusement, ce que tu cherches n'existe pas encore dans la base de données de Genève Partage.
+Malheureusement, <strong>{{{ Input::get('q') }}}</strong> n'existe pas encore dans la base de données de Genève Partage :(
+<br><strong>Veux-tu l'ajouter?</strong>
+<br><br>
+		{{ Form::open(array('route' => 'suggestions.store', 'autocomplete' => 'off'))}}
+		{{ Form::hidden('name',Input::get('q'))  }}
+		{{ Form::submit('Oui !', array('class' => 'btn btn-primary')) }}
+		{{ Form::close()}}
 <!-- A REMPLACER PAR SUGGESTION
 {{ link_to('ajout?q='.Input::get('q') ,"Veux-tu l'ajouter?", array('class' => '')) }}
 -->

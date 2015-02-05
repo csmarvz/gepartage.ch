@@ -31,7 +31,32 @@ class SuggestionController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		
+		$data = Input::all();
+		
+        $rules = array(
+            'name' => 'required'
+        );
+        
+        $messages = array(
+            'name.required' => "N'oublie pas ta suggestion !"
+        );
+
+        $validator = Validator::make($data, $rules, $messages);
+
+        if ($validator->fails())
+        {
+            return Redirect::to(URL::previous())->withErrors($validator)->withInput();
+        }
+		
+		$suggestion = new Suggestion();
+		$suggestion->name = Input::get('name');
+		$suggestion->user_id = Auth::id();
+		$suggestion->processed = false;
+		$suggestion->save();
+		
+		
+		return Redirect::to('')->with('success',"Merci d'avoir suggéré ".$suggestion->name . ", nous allons traité ta demande au plus vite !");
 	}
 
 

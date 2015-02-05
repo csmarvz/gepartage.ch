@@ -49,6 +49,7 @@ Route::group(array('before' => 'auth'), function()
 	
 	Route::get('idees', array('as' => 'ideas', 'uses' => 'IdeaController@index'));
 	Route::post('idees', array('as' => 'ideas.store', 'uses' => 'IdeaController@store'));
+	Route::post('suggestions', array('as' => 'suggestions.store', 'uses' => 'SuggestionController@store'));
 
 	Route::group(array('before' => 'admin'), function()
 	{

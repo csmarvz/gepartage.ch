@@ -6,14 +6,14 @@
 <div class="container text-center">
 	@if(Session::get('success'))
 	<div class="alert alert-success" role="alert">
-	  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-	  {{ Session::get('success') }}
+		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		{{ Session::get('success') }}
 	</div>
 	@endif
 	@if(Session::get('errors'))
 	<div class="alert alert-danger" role="alert">
-	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-	  {{ Session::get('errors')->first() }}
+		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		{{ Session::get('errors')->first() }}
 	</div>
 	@endif
 	
@@ -52,8 +52,8 @@
 			{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Mot de passe')) }}
 		</div>
 		<div class="form-group">
-	        {{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Confirmer le mot de passe')) }}
-	    </div>
+			{{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Confirmer le mot de passe')) }}
+		</div>
 		<div class="form-group">
 			{{ Form::text('address', Input::old('address'), array('class' => 'form-control', 'placeholder' => 'Rue et n°')) }}
 		</div>
@@ -82,49 +82,49 @@
 </div>
 
 @else
-	<div class="row">
-		<div class="col-md-2">
+<div class="row">
+	<div class="col-md-2">
 			
 			
-		</div>
-		<div class="col-md-8">
-			<div class="jumbotron">
+	</div>
+	<div class="col-md-8">
+		<div class="jumbotron">
 			<h2>Comment ça marche ?</h2>
 			<p>
 				Grâce à cette plateforme, tu vas pouvoir prêter et emprunter des objets et des services avec tes concitoyens genevois.
 			</p>
-			</div>
-			<h3>
-				1. Première étape
-			</h3>
+		</div>
+		<h3>
+			1. Première étape
+		</h3>
 			
-			<p>
-				Bien, commençons par ajouter les objets et services que tu peux mettre à disposition via {{ HTML::link('profil/mes_objets', 'ton profil') }} et revenons ici lorsque tu auras fini.
-			</p>
-			<h3>
-				2. Deuxième étape
-			</h3>
+		<p>
+			Bien, commençons par ajouter les objets et services que tu peux mettre à disposition via {{ HTML::link('profil/mes_objets', 'ton profil') }} et revenons ici lorsque tu auras fini.
+		</p>
+		<h3>
+			2. Deuxième étape
+		</h3>
 			
-			<p>
-				Maintenant que tu as mis à disposition tes biens, d'autres genevois peuvent te contacter pour te les emprunter. Mais sont-ils au courant que ce site existe?
-				<strong>Partage ce site avec tes amis par SMS, Email, Facebook, Twitter !</strong>
-			</p>
-			<h3>
-				3. Troisième étape
-			</h3>
+		<p>
+			Maintenant que tu as mis à disposition tes biens, d'autres genevois peuvent te contacter pour te les emprunter. Mais sont-ils au courant que ce site existe?
+			<strong>Partage ce site avec tes amis par SMS, Email, Facebook, Twitter !</strong>
+		</p>
+		<h3>
+			3. Troisième étape
+		</h3>
 			
-			<p>
-				Super, tes amis ont rejoint notre communauté ! Tu peux à présent chercher un bien ou un service dont tu as besoin en utilisant la barre de recherche ci-dessous. Si ce que tu cherches existe dans notre base de données, nous te proposerons une liste de Genevois que tu pourras contacter. S'il n'existe pas, tu peux créer un avis de recherche. Un Genevois bien attentionné pourra alors peut-être t'aider.
-				<br>
-				<strong>Enfin, n'hésite pas à proposer tes idées d'amélioration dans {{ HTML::link('idees', "la Boîte à idée !") }}</strong>
-			</p>
+		<p>
+			Super, tes amis ont rejoint notre communauté ! Tu peux à présent chercher un bien ou un service dont tu as besoin en utilisant la barre de recherche ou la liste ci-dessous. Si ce que tu cherches existe dans notre base de données, nous te proposerons une liste de Genevois que tu pourras contacter. Si personne ne peut le partager, tu pourras créer un avis de recherche. Un Genevois bien attentionné sera alors peut-être en mesure t'aider.
+			<br>
+			<strong>Enfin, n'hésite pas à proposer tes idées d'amélioration dans {{ HTML::link('idees', "la Boîte à idée !") }}</strong>
+		</p>
 			
 		
-		</div>
-		<div class="col-md-2">
-			
-		</div>
 	</div>
+	<div class="col-md-2">
+			
+	</div>
+</div>
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
@@ -132,52 +132,72 @@
 		<div class="form-group">
 			{{ Form::text('q', Input::old('q'), array('class' => 'form-control', 'placeholder' => "Tape ici ce que tu cherches")) }}
 			<!-- >
-			<span class="input-group-btn">
+				<span class="input-group-btn">
 				<button type="submit" class="btn btn-primary">
-					<span class="glyphicon glyphicon-search"></span>
+				<span class="glyphicon glyphicon-search"></span>
 				</button>
-			</span>
+				</span>
 				-->
+			</div>
+			{{ Form::close() }}
 		</div>
-		{{ Form::close() }}
 	</div>
-</div>
 		
-		<div class="row">
-			<div class="col-md-2"></div>
+	<div class="row">
+		<div class="col-md-2"></div>
 			
 		<div class="col-md-8">
 			@if(!Ad::all()->isEmpty())
 			<h4>		Les derniers avis de recherche
-</h4>
-@endif
+			</h4>
+			@endif
 			<ul class="list-group">
-		@foreach(Ad::all()->sortByDesc('updated_at') as $ad)
-		
-		
-
+				@foreach(Ad::all()->sortByDesc('updated_at') as $ad)
 				<li class="list-group-item">
-					<span class="badge"><a href="{{ URL::to('message/'. $ad->object->id.'/'. $ad->user->id) }}"><span style="color:white" class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></span>
+					<span class="badge">
+						<a href="{{ URL::to('message/'. $ad->object->id.'/'. $ad->user->id) }}">
+							<span style="color:white" class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						</a>
+					</span>
 					<p class="h5"><strong>{{HTML::link("partage/".$ad->object->slug,$ad->object->name)}}</strong>
 						par {{ $ad->user->firstname }} {{ $ad->user->lastname }}
 						<small>{{ $ad->created_at }}</small> </p>
-				</li>
-		
-		
-		
-		
-		
-		
-		@endforeach
-			</ul>
+					</li>
+					@endforeach
+				</ul>
+			</div>
 		</div>
+	</div>
+	
+	<div class="row">
+		
+			<div class="col-md-1"></div>
+		<div class="col-md-10">
+			@if(!Object::all()->isEmpty())
+			<div class="well">
+				<div class="row">
+				@foreach(Object::all() as $object)
+				<div class="col-md-3">
+					{{HTML::link("partage/$object->slug",$object->name)}}
+					</div>
+				@endforeach
+				
+				
+			</div>
+			<br>
+			L'objet ou le service que tu cherches n'est pas présent ici ? Fais-nous une suggestion !
+			
+			{{ Form::open(array('route' => 'suggestions.store', 'autocomplete' => 'off', 'class'=>'form-inline'))}}
+			  <div class="form-group">
+			    {{ Form::text('name',null,['class' => 'form-control'])  }}
+			  </div>
+			 
+			  <button type="submit" class="btn btn-primary">Envoyer</button>
+			{{ Form::close() }}
+			</div>
+			@endif
+	</div>
 </div>
+	@endif
 
-@endif
-
-	
-	
-	
-	
-
-@stop   
+	@stop   
