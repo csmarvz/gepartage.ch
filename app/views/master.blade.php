@@ -61,6 +61,10 @@
 							-->
 						
                         @else
+						<li class="">
+							{{ HTML::link('idees','Boîte à idées') }}
+							
+						</li>
 						<li>
 							{{ HTML::link('messages','Messages') }}
 						</li>
@@ -90,9 +94,17 @@
         <div class="container">
 
               <br>
+			  <p>
+			  	Pour tes commentaires et suggestions, envoie-nous un email à csmarvz@gmail.com ! Merci d'avance
+				
+			  </p>
 			  <small>
-            <p>Concept développé par <a href="mailto:csmarvz@gmail.com">Henry Seng</a>.
-		</small>
+            
+			<p>
+	    Tu es un spécialiste du design, de la communication, de la programmation ou tu veux tout simplement nous aider à construire cette plateforme ? 
+		<a class="" href="mailto:csmarvz@gmail.com" role="button">Contacte-nous vite !</a></p>		
+	<p>Concept développé par <a href="mailto:csmarvz@gmail.com">Henry Seng</a>.</p></small>
+
           </div>
 
       </footer>

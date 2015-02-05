@@ -18,7 +18,8 @@
 	@endif
 	
 	<h1>Genève Partage</h1>
-	<p>Partager entre genevois des objets et des services!</p>
+	<p><strong>Partage entre genevois tes objets et services !</strong></p>
+	<p><small>Incroyable, une communauté de  {{ User::all()->count() }} membres </small></p>
 </div>
 
 
@@ -82,12 +83,17 @@
 
 @else
 	<div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-6">
-			<h2>Comment ça marche?</h2>
+		<div class="col-md-2">
+			
+			
+		</div>
+		<div class="col-md-8">
+			<div class="jumbotron">
+			<h2>Comment ça marche ?</h2>
 			<p>
 				Grâce à cette plateforme, tu vas pouvoir prêter et emprunter des objets et des services avec tes concitoyens genevois.
 			</p>
+			</div>
 			<h3>
 				1. Première étape
 			</h3>
@@ -109,12 +115,19 @@
 			
 			<p>
 				Super, tes amis ont rejoint notre communauté ! Tu peux à présent chercher un bien ou un service dont tu as besoin en utilisant la barre de recherche ci-dessous. Si ce que tu cherches existe dans notre base de données, nous te proposerons une liste de Genevois que tu pourras contacter. S'il n'existe pas, tu peux créer un avis de recherche. Un Genevois bien attentionné pourra alors peut-être t'aider.
+				<br>
+				<strong>Enfin, n'hésite pas à proposer tes idées d'amélioration dans {{ HTML::link('idees', "la Boîte à idée !") }}</strong>
 			</p>
+			
+		
+		</div>
+		<div class="col-md-2">
+			
 		</div>
 	</div>
 <div class="row">
-	<div class="col-md-3"></div>
-	<div class="col-md-6">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
 		{{ Form::open(array('route' => 'objects.search', 'method' => 'get')) }}
 		<div class="form-group">
 			{{ Form::text('q', Input::old('q'), array('class' => 'form-control', 'placeholder' => "Tape ici ce que tu cherches")) }}
@@ -131,9 +144,9 @@
 </div>
 		
 		<div class="row">
-			<div class="col-md-3"></div>
+			<div class="col-md-2"></div>
 			
-		<div class="col-md-6">
+		<div class="col-md-8">
 			@if(!Ad::all()->isEmpty())
 			<h4>		Les derniers avis de recherche
 </h4>
