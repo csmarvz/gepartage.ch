@@ -18,7 +18,7 @@
 	@endif
 	
 	<h1>Genève Partage</h1>
-	<p><strong>Partage entre genevois tes objets et services !</strong></p>
+	<p><strong>Partage entre Genevois tes objets et services !</strong></p>
 	<p><small>Incroyable, une communauté de  {{ User::all()->count() }} membres </small></p>
 </div>
 
