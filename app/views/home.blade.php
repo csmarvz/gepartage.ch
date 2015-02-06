@@ -198,10 +198,21 @@
 			
 			
 					@if(Auth::user()->is_admin)
-				@foreach(Suggestion::all() as $suggestion)
-				    {{{ $suggestion->name }}}
+				@foreach(Suggestion::where('processed','=',0)->get() as $suggestion)
+				
+				{{ Form::open(array('route' => 'suggestions.validate', 'autocomplete' => 'off', 'class'=>'form-inline'))}}
+				  <div class="form-group">
+					  {{ Form::hidden('id', $suggestion->id) }}
+				    {{ Form::text('name',$suggestion->name,['class' => 'form-control'])  }}
+				  </div>
+			 
+				  <button type="submit" name="validate" class="btn btn-success">Valider</button>
+				  <button type="submit" name="discard" class="btn btn-danger">Supprimer</button>
+				  {{ Form::label('name',"proposé par ".$suggestion->user->firstname ." ". $suggestion->user->lastname." le ". $suggestion->created_at)}}
+				{{ Form::close() }}
+				   
 				 
-				  <small> proposé par {{{ $suggestion->user->firstname }}} {{{ $suggestion->user->lastname }}} le {{ $suggestion->created_at }}</small>
+				  <small> </small>
 				  <br>
 				@endforeach
 		

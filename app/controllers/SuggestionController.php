@@ -24,6 +24,37 @@ class SuggestionController extends \BaseController {
 	}
 
 
+	public function discard()
+	{
+		
+		
+	}
+	
+	public function validate()
+	{
+		$suggestion = Suggestion::find(Input::get('id'));
+		
+		if (isset($_POST['discard'])) {
+			$suggestion->processed = true;
+			$suggestion->added = false;
+			$suggestion->save();
+		
+			return Redirect::to('')->with('success',"La suggestion ".$suggestion->name . " a été écartée");
+		} else {
+		
+		
+		$object = new Object();
+		$object->name = Input::get('name');
+		$object->slug = Str::slug($object->name);
+		$object->save();
+		$suggestion->processed = true;
+		$suggestion->added = true;
+		$suggestion->save();
+		
+		return Redirect::to('')->with('success',$object->name . " a bien été rajouté à la base !");
+	}
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -56,7 +87,7 @@ class SuggestionController extends \BaseController {
 		$suggestion->save();
 		
 		
-		return Redirect::to('')->with('success',"Merci d'avoir suggéré ".$suggestion->name . ", nous allons traité ta demande au plus vite !");
+		return Redirect::to('')->with('success',"Merci d'avoir suggéré ".$suggestion->name . ", nous allons traiter ta demande au plus vite !");
 	}
 
 

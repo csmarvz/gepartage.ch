@@ -53,6 +53,7 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::group(array('before' => 'admin'), function()
 	{
+		Route::post('suggestions/valider', array('as' => 'suggestions.validate', 'uses' => 'SuggestionController@validate'));
 		Route::get('admin', function()
 		{
 			
