@@ -18,12 +18,11 @@
 	@endif
 </div>
 <div class="page-header">
-  <h1>La Boîte à idée<br><small>Propose-nous tes idées pour améliorer Genève Partage</small></h1>
+  <h1>La Boîte à idées<br><small>Propose-nous tes idées pour améliorer Genève Partage</small></h1>
 </div>
 
 		{{ Form::open(array('route' => 'ideas.store', 'autocomplete' => 'off'))}}
 		<div class="form-group">
-			{{Form::label('text','Ton idée')}}
 			{{ Form::textarea('text', Input::get('text'), array('class' => 'form-control', 'placeholder' => "")) }}
 		</div>
 		
@@ -31,6 +30,7 @@
 		{{ Form::close()}}
 		
 		
+			@if(Auth::user()->is_admin)
 		@foreach(@$ideas as $idea)
 		<div class="panel panel-default">
 		  <div class="panel-body">
@@ -40,7 +40,7 @@
 		</div>
 		@endforeach
 		
-	
+	@endif
 	
 	
 	

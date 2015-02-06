@@ -57,5 +57,49 @@ class ObjectController extends BaseController {
 		
 		return View::make('search',compact('objects','search'));
 	}
+	
+	public static function allFourColumns()
+	{
+		$count = Object::count();
+		$rowSize = round($count/4);
+		$col1 = Object::orderBy('name','asc')->take($rowSize)->get();
+	
+		$col2 = Object::orderBy('name','asc')->take($rowSize)->skip($rowSize)->get();
+		$col3 = Object::orderBy('name','asc')->take($rowSize)->skip($rowSize*2)->get();
+		$col4 = Object::orderBy('name','asc')->take($rowSize)->skip($rowSize*3)->get();
+		
+		$result = "<div class='col-md-3'>";
+		
+		foreach($col1 as $object)
+		{
+			$result = $result . HTML::link("partage/$object->slug",$object->name) . '<br>';
+		}
+		$result = $result . "</div>";
+		
+		$result = $result."<div class='col-md-3'>";
+		foreach($col2 as $object)
+		{
+			$result = $result. HTML::link("partage/$object->slug",$object->name) . '<br>';
+		}
+		$result = $result."</div>";
+		$result = $result."<div class='col-md-3'>";
+		foreach($col3 as $object)
+		{
+			$result = $result. HTML::link("partage/$object->slug",$object->name) . '<br>';
+		}
+		$result = $result."</div>";
+		$result = $result."<div class='col-md-3'>";
+		foreach($col4 as $object)
+		{
+			$result = $result. HTML::link("partage/$object->slug",$object->name) . '<br>';
+		}
+		$result = $result."</div>";
+			
+		
+		return $result;
+		
+		
+		
+	}
 
 }

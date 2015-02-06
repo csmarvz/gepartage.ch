@@ -115,8 +115,7 @@
 			
 		<p>
 			Super, tes amis ont rejoint notre communauté ! Tu peux à présent chercher un bien ou un service dont tu as besoin en utilisant la barre de recherche ou la liste ci-dessous. Si ce que tu cherches existe dans notre base de données, nous te proposerons une liste de Genevois que tu pourras contacter. Si personne ne peut le partager, tu pourras créer un avis de recherche. Un Genevois bien attentionné sera alors peut-être en mesure t'aider.
-			<br>
-			<strong>Enfin, n'hésite pas à proposer tes idées d'amélioration dans {{ HTML::link('idees', "la Boîte à idée !") }}</strong>
+			
 		</p>
 			
 		
@@ -176,13 +175,15 @@
 			@if(!Object::all()->isEmpty())
 			<div class="well">
 				<div class="row">
-				@foreach(Object::all() as $object)
+					{{ ObjectController::allFourColumns() }}
+					<!--
+				@foreach(Object::orderBy('name','asc')->get() as $object)
 				<div class="col-md-3">
 					{{HTML::link("partage/$object->slug",$object->name)}}
 					</div>
 				@endforeach
 				
-				
+				-->
 			</div>
 			<br>
 			L'objet ou le service que tu cherches n'est pas présent ici ? Fais-nous une suggestion !
@@ -194,8 +195,21 @@
 			 
 			  <button type="submit" class="btn btn-primary">Envoyer</button>
 			{{ Form::close() }}
-			</div>
+			
+			
+					@if(Auth::user()->is_admin)
+				@foreach(Suggestion::all() as $suggestion)
+				    {{{ $suggestion->name }}}
+				 
+				  <small> proposé par {{{ $suggestion->user->firstname }}} {{{ $suggestion->user->lastname }}} le {{ $suggestion->created_at }}</small>
+				  <br>
+				@endforeach
+		
 			@endif
+			@endif
+			</div>
+			
+					
 	</div>
 </div>
 	@endif

@@ -95,8 +95,7 @@
 
               <br>
 			  <p>
-			  	Pour tes commentaires et suggestions, envoie-nous un email à csmarvz@gmail.com ! Merci d'avance
-				
+				  <strong>Tu as des idées pour améliorer Genève partage ? Utilise {{ HTML::link('idees', "la Boîte à idées !") }}</strong>	
 			  </p>
 			  <small>
             
