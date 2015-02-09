@@ -16,3 +16,8 @@ div.form-group.special {
 body {
 	padding-top: 65px;
 }
+
+.scrollable {
+	max-height: 300px;
+	overflow-y: scroll;
+}

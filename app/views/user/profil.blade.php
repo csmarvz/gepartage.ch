@@ -14,7 +14,9 @@
 	</div>
 	@endif
 	
+	<div class="page-header">
 		<h1>Mon profil</h1>
+	</div>
 
 <ul class="nav nav-pills">
 <li role="presentation"  class="{{ @$profil?'active':'' }}"><a href="{{ URL::to('profil')}}">Mes données personnelles</a></li>

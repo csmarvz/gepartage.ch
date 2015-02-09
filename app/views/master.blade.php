@@ -66,7 +66,7 @@
 							
 						</li>
 						<li>
-							{{ HTML::link('messages','Messages') }}
+							{{ HTML::link('forum','Forum') }}
 						</li>
 						<li class="dropdown">
 						              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bienvenue, <b>{{ Auth::user()->firstname . " " . Auth::user()->lastname  }}</b> <span class="caret"></span></a>
@@ -74,6 +74,9 @@
 						                <li>{{ HTML::link('profil', 'Mon profil') }}</li>
 										<li>{{ HTML::link('profil/mes_objets', 'Mes objets') }}</li>
 										<li>{{ HTML::link('profil/mes_avis', 'Mes avis de recherche') }}</li>
+										<li>
+											{{ HTML::link('messages','Mes messages') }}
+										</li>
 										<li>{{ HTML::link('deconnexion', 'Déconnexion') }}</li>
 						              </ul>
 						            </li>

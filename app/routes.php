@@ -47,6 +47,21 @@ Route::resource('users','UserController');
 Route::group(array('before' => 'auth'), function()
 {
 	
+	Route::post('forum/{id}',  array('as' => 'disc_messages.store', 'uses' => 'DiscussionController@storeMessage'));
+	
+	Route::get('forum', function() {
+		$discussions = Discussion::orderBy('created_at','desc')->paginate(10);
+		return View::make('discussion.index', compact('discussions'));
+	});
+	
+	Route::get('forum/{id}', function($id) {
+		$discussion = Discussion::find($id);
+		$messages = DiscMessage::where('discussion_id','=',$discussion->id)->orderBy('created_at','asc')->paginate(10);
+		return View::make('discussion.show', compact('discussion','messages'));
+	});
+	
+	Route::post('forum', array('as' => 'discussions.store', 'uses' => 'DiscussionController@store'));
+	
 	Route::get('idees', array('as' => 'ideas', 'uses' => 'IdeaController@index'));
 	Route::post('idees', array('as' => 'ideas.store', 'uses' => 'IdeaController@store'));
 	Route::post('suggestions', array('as' => 'suggestions.store', 'uses' => 'SuggestionController@store'));
