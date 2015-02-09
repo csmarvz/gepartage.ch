@@ -20,6 +20,15 @@
 	<h1>Genève Partage</h1>
 	<p><strong>Partage entre Genevois tes objets et services !</strong></p>
 	<p><small>Incroyable, une communauté de  {{ User::all()->count() }} membres </small></p>
+	<div class="jumbotron">
+		<p>Si tu es plutôt du genre généreux et prêt(e) à aider tes pairs dans le besoin tout comme toi, Genève Partage est fait pour toi !</p>
+		
+		<h2>Pourquoi ?</h2>
+		<p>
+			Grâce à cette plateforme, <!--tu vas pouvoir prêter et emprunter des objets et des services avec tes concitoyens genevois.-->
+			tu vas pouvoir économiser des sous et redonner une deuxième vie à tes objets qui prennent la poussière.
+		</p>
+	</div>
 </div>
 
 
@@ -92,12 +101,7 @@
 			
 	</div>
 	<div class="col-md-8">
-		<div class="jumbotron">
-			<h2>Comment ça marche ?</h2>
-			<p>
-				Grâce à cette plateforme, tu vas pouvoir prêter et emprunter des objets et des services avec tes concitoyens genevois.
-			</p>
-		</div>
+		
 		<h3>
 			1. Première étape
 		</h3>
@@ -110,7 +114,7 @@
 		</h3>
 			
 		<p>
-			Maintenant que tu as mis à disposition tes biens, d'autres genevois peuvent te contacter pour te les emprunter. Mais sont-ils au courant que ce site existe?
+			Maintenant que tu as mis à disposition tes biens, d'autres genevois peuvent te contacter pour te les emprunter. Mais sont-ils au courant que ce site existe ?
 			<strong>Partage ce site avec tes amis par SMS, Email, Facebook, Twitter !</strong>
 		</p>
 		<h3>
@@ -118,7 +122,7 @@
 		</h3>
 			
 		<p>
-			Super, tes amis ont rejoint notre communauté ! Tu peux à présent chercher un bien ou un service dont tu as besoin en utilisant la barre de recherche ou la liste ci-dessous. Si ce que tu cherches existe dans notre base de données, nous te proposerons une liste de Genevois que tu pourras contacter. Si personne ne peut le partager, tu pourras créer un avis de recherche. Un Genevois bien attentionné sera alors peut-être en mesure t'aider.
+			Super, tes amis ont rejoint notre communauté !<strong> Tu peux à présent chercher un bien ou un service dont tu as besoin en utilisant la barre de recherche ou la liste ci-dessous.</strong> <br><small>Si ce que tu cherches existe dans notre base de données, nous te proposerons une liste de Genevois que tu pourras contacter. Si personne ne peut le partager, tu pourras créer un avis de recherche. Un Genevois bien attentionné sera alors peut-être en mesure t'aider.</small>
 			
 		</p>
 			
@@ -133,6 +137,7 @@
 	<div class="col-md-8">
 		{{ Form::open(array('route' => 'objects.search', 'method' => 'get')) }}
 		<div class="form-group">
+			
 			{{ Form::text('q', Input::old('q'), array('class' => 'form-control', 'placeholder' => "Tape ici ce que tu cherches")) }}
 			<!-- >
 				<span class="input-group-btn">

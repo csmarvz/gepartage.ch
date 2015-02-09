@@ -48,7 +48,7 @@ class AuthController extends BaseController {
             if (Auth::attempt($userdata))
             {
                 // Redirect to homepage
-                return Redirect::to('')->with('success', "Tu t'es bien connecté!");
+                return Redirect::to('')->with('success', "Connexion réussie, bienvenu !");
             }
             else
             {
@@ -67,6 +67,6 @@ class AuthController extends BaseController {
         Auth::logout();
 
         // Redirect to homepage
-        return Redirect::to('')->with('success', 'Déconnexion réussie, à bientôt!');
+        return Redirect::to('')->with('success', 'Déconnexion réussie, à bientôt !');
     }
 }

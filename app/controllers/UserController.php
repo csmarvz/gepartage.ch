@@ -27,7 +27,7 @@ class UserController extends BaseController {
             'phone.required' => "N'oublie pas ton numéro de téléphone !",
             'email.required' => "N'oublie pas ton adresse email !",
             'email.email' => "Attention, le format de l'email est xxx@yyy.zzz",
-            'email.unique' => "Malheureusement, l'adresse email que tu as entrée est déjà utilisée.",
+            'email.unique' => "Malheureusement, l'adresse email que tu as saisie est déjà utilisée.",
 			'password.required' => "N'oublie pas ton mot de passe !",
             'password.same' => "Attention! Ton mot de passe et la confirmation doivent être identiques",
             'zip.required' => "N'oublie pas ton numéro postal !",
@@ -101,9 +101,9 @@ class UserController extends BaseController {
 		
 		Auth::user()->update($data);
 		if($object_update) {
-			return Redirect::to('profil/mes_objets')->with('success','Les objets que tu peux partager ont bien été mis à jour!');;
+			return Redirect::to('profil/mes_objets')->with('success','Les objets que tu peux partager ont bien été mis à jour !');;
 		}
-		return Redirect::to('profil')->with('success','Ton profil a été mis à jour avec succès!');;
+		return Redirect::to('profil')->with('success','Ton profil a été mis à jour avec succès !');;
 	}
 	public function destroy()
 	{
