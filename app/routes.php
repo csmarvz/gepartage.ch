@@ -39,7 +39,7 @@ Route::get('deconnexion', array('as' => 'logout', 'uses' => 'AuthController@getL
 
 Route::get('inscription', function()
 {
-	return View::make('inscription');
+	return Redirect::to('');
 });
 
 Route::resource('users','UserController');

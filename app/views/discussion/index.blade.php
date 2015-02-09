@@ -38,7 +38,13 @@
 		  <div class="panel-body">
 			{{ HTML::link("forum/$discussion->id",$discussion->title) }}
 		  </div>
-		  <div class="panel-footer"><small>Dernier message de xx posté le xx</small></div>
+		  <div class="panel-footer">
+			  @if($discussion->messages->count()>0)
+			  <small>Dernier message posté le {{ $discussion->messages->sortByDesc('created_at')->first()->created_at }}</small>
+		  @else
+		  <small>Pas de messages</small>
+		  @endif
+		  </div>
 		</div>
 		@endforeach
 		{{ $discussions->links() }}

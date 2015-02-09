@@ -13,11 +13,11 @@ class UserController extends BaseController {
 		
         $rules = array(
             'firstname' => 'required',
-            'lastname' => 'required',
-			'phone' => 'required',
+            //'lastname' => 'required',
+			//'phone' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|same:password_confirmation',
-			'address' => 'required',
+			//'address' => 'required',
 			'zip' => 'required|integer|between:1200,1299'
         );
         
@@ -49,7 +49,7 @@ class UserController extends BaseController {
 		
 		
 		Auth::login($user);
-		return Redirect::to('')->with('success','Bravo '. $user->firstname . ', ton compte a bien été créé! Tu peux maintenant utiliser notre plateforme pour partager des objets.');
+		return Redirect::to('')->with('success','Bravo '. $user->firstname . ', ton compte a bien été créé ! Tu peux maintenant utiliser notre plateforme pour partager des objets.');
 	}
 	
 	public function storeCategories(){
