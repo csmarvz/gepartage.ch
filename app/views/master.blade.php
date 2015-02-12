@@ -3,14 +3,18 @@
         
         {{ HTML::script('assets/js/jquery.js') }}
         {{ HTML::script('assets/js/bootstrap.js') }}
-        {{ HTML::style('assets/css/bootstrap.min.css') }}
+		{{ HTML::style('assets/css/bootstrap.min.css') }}
 		{{ HTML::style('assets/css/style.css') }}
 		
+		
+		@yield('head')
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Genève Partage</title>
+		
+		
     </head>
     <body>
 		

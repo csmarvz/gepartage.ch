@@ -33,6 +33,7 @@ class InitialMigration extends Migration {
 			$table->string('name');
 			$table->string('image_path');
 			$table->string('slug')->unique();
+			$table->boolean('is_custom')->default(0);
 			$table->timestamps();
 		});	
 		

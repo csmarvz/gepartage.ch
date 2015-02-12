@@ -6,6 +6,52 @@ class UserController extends BaseController {
 	{
 	}
 	
+	public function addObject()
+	{
+		//check if name is empty
+		$data = Input::all();
+		
+        $rules = array(
+            'name' => 'required'
+        );
+        
+        $messages = array(
+            'name.required' => "N'oublie pas le nom de l'objet !"
+        );
+
+        $validator = Validator::make($data, $rules, $messages);
+
+        if ($validator->fails())
+        {
+            return Redirect::to('profil/mes_objets')->withErrors($validator);
+        }
+		
+		//check if object already exists
+		$slug = Str::slug(Input::get('name'));
+		$objects = Object::where('slug','=',$slug)->get();
+		
+		//if yes, just attach it to the user
+		if($objects->count()==1){
+			$object = $objects->first();
+			$object->users()->attach(Auth::id());
+		//if no, create it and attach it to the user
+		}else{
+			$object = new Object();
+			$object->name = Input::get('name');
+			$object->creator_id = Auth::id();
+			$object->slug = Str::slug($object->name);
+			$object->is_custom = true;
+			$object->save();
+		
+			$object->users()->attach(Auth::id());
+		}
+		
+		
+		
+		
+		return Redirect::to('profil/mes_objets')->with('success','Ton objet a été ajouté à ta liste !');
+	}
+	
 	public function store()
 	{
 		$data = Input::all();
@@ -101,9 +147,9 @@ class UserController extends BaseController {
 		
 		Auth::user()->update($data);
 		if($object_update) {
-			return Redirect::to('profil/mes_objets')->with('success','Les objets que tu peux partager ont bien été mis à jour !');;
+			return Redirect::to('profil/mes_objets')->with('success','Les objets que tu peux partager ont bien été mis à jour !');
 		}
-		return Redirect::to('profil')->with('success','Ton profil a été mis à jour avec succès !');;
+		return Redirect::to('profil')->with('success','Ton profil a été mis à jour avec succès !');
 	}
 	public function destroy()
 	{

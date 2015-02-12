@@ -107,7 +107,9 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('profil/mes_objets', function()
 	{
 		return View::make('user.profil')->with('objets', true);;
-	});	
+	});
+	
+	Route::post('profil/mes_objets', array('as' => 'user_add_object', 'uses' => 'UserController@addObject'));
 	
 	Route::get('profil/mes_avis', function()
 	{

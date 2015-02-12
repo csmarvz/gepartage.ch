@@ -23,7 +23,7 @@ class ObjectController extends BaseController {
 			$ad_text = "Ton avis de recherche a aussi été émis.";
 		}
 		
-		return Redirect::to('')->with('success',$object->name . " a bien été rajouté à la base! ". $ad_text);
+		return Redirect::to('')->with('success',$object->name . " a bien été rajouté à la base ! ". $ad_text);
 		
 	}
 	
@@ -60,13 +60,13 @@ class ObjectController extends BaseController {
 	
 	public static function allFourColumns()
 	{
-		$count = Object::count();
+		$count = Object::where('is_custom','=',0)->count();
 		$rowSize = round($count/4);
-		$col1 = Object::orderBy('name','asc')->take($rowSize)->get();
+		$col1 = Object::where('is_custom','=',0)->orderBy('name','asc')->take($rowSize)->get();
 	
-		$col2 = Object::orderBy('name','asc')->take($rowSize)->skip($rowSize)->get();
-		$col3 = Object::orderBy('name','asc')->take($rowSize)->skip($rowSize*2)->get();
-		$col4 = Object::orderBy('name','asc')->take($rowSize)->skip($rowSize*3)->get();
+		$col2 = Object::where('is_custom','=',0)->orderBy('name','asc')->take($rowSize)->skip($rowSize)->get();
+		$col3 = Object::where('is_custom','=',0)->orderBy('name','asc')->take($rowSize)->skip($rowSize*2)->get();
+		$col4 = Object::where('is_custom','=',0)->orderBy('name','asc')->take($rowSize)->skip($rowSize*3)->get();
 		
 		$result = "<div class='col-md-3'>";
 		

@@ -48,7 +48,7 @@ class AuthController extends BaseController {
             if (Auth::attempt($userdata))
             {
                 // Redirect to homepage
-                return Redirect::to('')->with('success', "Connexion réussie, bienvenu !");
+                return Redirect::to('')->with('success', "Connexion réussie !");
             }
             else
             {
