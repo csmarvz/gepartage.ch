@@ -26,7 +26,7 @@
 		<h2>Pourquoi ?</h2>
 		<p>
 			Grâce à cette plateforme, <!--tu vas pouvoir prêter et emprunter des objets et des services avec tes concitoyens genevois.-->
-			tu vas pouvoir économiser des sous et redonner une deuxième vie à tes objets qui prennent la poussière.
+			tu vas pouvoir économiser des sous et donner une deuxième vie à tes objets qui prennent la poussière.
 		</p>
 	</div>
 </div>

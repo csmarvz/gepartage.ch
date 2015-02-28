@@ -82,7 +82,7 @@
 </div>
 @elseif(@$objets)
 
-<div class="well">
+
 	L'objet que tu souhaites partager n'est pas dans la liste? Ajoute-le ici !
 	
 	{{ Form::open(array('route' => 'user_add_object', 'autocomplete' => 'off', 'class'=>'form form-inline')) }}
@@ -97,9 +97,15 @@
 
 
     
+
+
+
 {{ Form::model(Auth::user(), array('route' => array('users.update', Auth::user()->id), 'method' => 'put', 'autocomplete' => 'off')) }}
 	
 {{ Form::hidden('objects_update',true) }}
+
+<h2>Objets ajoutés</h2>
+
 <div class="row">
 	
 	
@@ -110,29 +116,30 @@
 	
 	
 		<div class="form-group">
-			<strong>
+			
 				 {{ Form::checkbox('objects_array[]', $object->id, Auth::user()->hasObject($object->id),array('data-toggle' => 'toggle', 'data-on' => $object->name, 'data-off' => $object->name, 'data-onstyle' => 'success', 'data-offstyle' => 'danger', 'data-width' => '100%')) }}
 					 
 				<!-- {{ Form::checkbox('objects_array[]', $object->id, Auth::user()->hasObject($object->id)) }} {{ $object->name }}
 					-->
-			</strong>
+			
 			
 		</div>
 	</div>
 	@endforeach
 	
 </div>
-</div>
 
+<h2>Objets généraux</h2>
 	<div class="row">
-	</div>
-	
 	@foreach(Object::where('is_custom','=',0)->get() as $object)
 	<div class="col-md-3">
 			
 		
 		<div class="form-group">
+		
 			{{ Form::checkbox('objects_array[]', $object->id, Auth::user()->hasObject($object->id),array('data-toggle' => 'toggle', 'data-on' => $object->name, 'data-off' => $object->name, 'data-onstyle' => 'success', 'data-width' => '100%')) }}
+			
+			
 			<!--
 			{{ Form::checkbox('objects_array[]', $object->id, Auth::user()->hasObject($object->id)) }} {{ $object->name }} 
 			-->
@@ -140,16 +147,18 @@
 		</div>
 	</div>
 	@endforeach
+</div>
 	
 
 			
 			
 	<div class="row">
-	</div>
+
 	<div class="col-md-3">
 			
 	{{ Form::submit('Enregistrer', array('class' => 'btn btn-primary')) }}
 </div>
+	</div>
 	{{ Form::close() }}
 	
 	@endif
@@ -162,6 +171,4 @@
 	
 </div>
 
-<script>
-</script>
 @stop   

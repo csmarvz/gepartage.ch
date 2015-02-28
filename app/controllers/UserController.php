@@ -134,8 +134,10 @@ class UserController extends BaseController {
 		
 		$object_update = false;
 		if($data['objects_update']) {
+			
 			$object_update = true;
 			if(isset($data['objects_array'])){
+				//dd($data['objects_array']);
 				Auth::user()->objects()->sync($data['objects_array']);
 				unset($data['objects_array']);
 			}else {
