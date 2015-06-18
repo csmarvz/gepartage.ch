@@ -116,6 +116,8 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('user.profil')->with('avis', true);;
 	});	
 	
+	Route::get('profil/mes_avis/{id}/supprimer', array('uses' => 'AdController@destroy'));
+	
 	Route::get('messages', function()
 	{
 		return Redirect::to('messages/reception');

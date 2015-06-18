@@ -42,6 +42,10 @@
 <div class"row">
 	<div class="col-md-12">
 		{{ HTML::link("partage/".$ad->object->slug,$ad->object->name) }} <small><cite>le {{{ @$ad->created_at }}}</cite></small>
+		
+		{{ HTML::link("profil/mes_avis/".$ad->id."/supprimer","",array('class' => 'btn btn-danger glyphicon glyphicon-remove'))}}
+		
+	</button>
 	</div>
 </div>
 @endforeach

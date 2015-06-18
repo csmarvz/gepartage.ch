@@ -30,13 +30,18 @@ class AdController extends BaseController {
 	}
 	public function create()
 	{
-		Return View::make('annonce');
+		return View::make('annonce');
 	}
 	public function update($id)
 	{
 	}
-	public function destroy()
+	public function destroy($id)
 	{
+		$ad = Ad::find($id);
+		if($ad){
+			$ad->delete();
+		}
+		return Redirect::to("profil/mes_avis");
 	}
 
 }
