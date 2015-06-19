@@ -33,26 +33,37 @@ class SuggestionController extends \BaseController {
 	public function validate()
 	{
 		$suggestion = Suggestion::find(Input::get('id'));
+		$name = Input::get('name');
+		$added = false;
+		$message = "";
 		
 		if (isset($_POST['discard'])) {
-			$suggestion->processed = true;
 			$suggestion->added = false;
-			$suggestion->save();
-		
-			return Redirect::to('')->with('success',"La suggestion ".$suggestion->name . " a été écartée");
+			$message = "La suggestion ". $name . " a été écartée";
 		} else {
-		
-		
-		$object = new Object();
-		$object->name = Input::get('name');
-		$object->slug = Str::slug($object->name);
-		$object->save();
+			$existing_object = Object::where('slug','=',$name)->first();
+			if ($existing_object) {
+				$existing_object->name = $name;
+				$existing_object->is_custom = 0;
+				$existing_object->save();
+				$message = $name . " existait déjà et a bien été rajouté à la base d'objets non custom !";
+			} else {
+				$object = new Object();
+				$object->name = $name;
+				$object->slug = Str::slug($object->name);
+				$object->is_custom = 0;
+				$object->save();
+				$message = $name . " a bien été rajouté à la base !";
+			}
+			$added = true;	
+		}
+
 		$suggestion->processed = true;
-		$suggestion->added = true;
+		$suggestion->added = $added;
 		$suggestion->save();
 		
-		return Redirect::to('')->with('success',$object->name . " a bien été rajouté à la base !");
-	}
+		return Redirect::to('')->with('success', $message);
+	
 	}
 
 	/**
